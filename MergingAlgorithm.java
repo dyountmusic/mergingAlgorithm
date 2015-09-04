@@ -19,12 +19,12 @@ public class MergingAlgorithm {
     public static void main(String[] args) {
         
         //Declare both arrays and populate them
-        int[] arrayA = {1,2,3};
-        int[] arrayB = {4,5,6};
+        int[] arrayA = {-2,4,8};
+        int[] arrayB = {1,7,9};
         
         //Declare an array with places for each of the values to be added
         // This is where we will merge the two previous arrays into
-        int [] arrayC = new int[6];
+        int [] arrayC = new int[arrayA.length + arrayB.length];
         System.out.println("ArrayC before merging is " + Arrays.toString(arrayC));
         
         //Declare a variable for the counter and initilize it as 0
@@ -33,11 +33,23 @@ public class MergingAlgorithm {
         int counterC = 0;
         
         //Begin merge
-        while (counterC < (arrayA.length + arrayB.length)){
+        while (counterC < (arrayA.length + arrayB.length) - 1){
 
+            System.out.println("ArrayC after merging is " + Arrays.toString(arrayC));
             System.out.println("Counter A is " + counterA);
             System.out.println("Counter B is " + counterB);
             System.out.println("Counter C is " + counterC);
+             
+            //Test case for if you complete
+            if (counterA == (arrayA.length-1)){
+                arrayC[counterC] = arrayB[counterB];
+                counterB++;
+                counterC++;
+            } else if (counterB == (arrayB.length-1)) {
+                arrayC[counterC] = arrayA[counterA];
+                counterA++;
+                counterC++;
+            }
             
             //Check if the value in arrayA[0] are smaller than the value in arrayB[0]
             //Iterate the [counter] value each array is checking if that array has the lesser value and it's moved
@@ -57,6 +69,9 @@ public class MergingAlgorithm {
                 System.out.println("Catch this exception, please");
                 
             }
+            //Appending the last number
+            //Hardcoded
+            arrayC[counterC] = arrayB[arrayB.length-1];
             System.out.println("While has completed a loop.");
             
         }
