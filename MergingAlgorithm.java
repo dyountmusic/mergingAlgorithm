@@ -22,39 +22,49 @@ public class MergingAlgorithm {
         int[] arrayA = {1,2,3};
         int[] arrayB = {4,5,6};
         
-        //Declare an empty array
+        //Declare an array with places for each of the values to be added
         // This is where we will merge the two previous arrays into
-        int[] arrayC = {0,0,0,0,0,0};
+        int [] arrayC = new int[6];
+        System.out.println("ArrayC before merging is " + Arrays.toString(arrayC));
         
         //Declare a variable for the counter and initilize it as 0
-        //This is because we will always start at the first value in each array
         int counterA = 0;
         int counterB = 0;
         int counterC = 0;
         
-        // Until the array is finished keep going through
-        while (counterA + counterB <= (arrayA.length + arrayB.length) ) {
+        //Begin merge
+        while (counterC < (arrayA.length + arrayB.length)){
 
-            // Merge the arrays
+            System.out.println("Counter A is " + counterA);
+            System.out.println("Counter B is " + counterB);
+            System.out.println("Counter C is " + counterC);
+            
+            //Check if the value in arrayA[0] are smaller than the value in arrayB[0]
+            //Iterate the [counter] value each array is checking if that array has the lesser value and it's moved
             if (arrayA[counterA] <= arrayB[counterB]){
-                //arrayA is the smaller number and therefore moved to the new array
+                //Assign arrayA[counterA] (smaller value) to arrayC[counterC]
                 arrayC[counterC] = arrayA[counterA];
-                //iterate the counterA because we moved from arrayA
-                counterA ++;
-                //iterate counter because we need to keep place of where we are in the new array
-                counterC ++;
-            } else {
-                //arrayB is the smaller number and therefore moved to the new array
+                //Iterate both counterA and counterC because we used it
+                counterA++;
+                counterC++;
+            
+            } else if (arrayB[counterB] <= arrayA[counterA]){
                 arrayC[counterC] = arrayB[counterB];
-                //iterate the counterB because we moved from arrayB
-                counterB ++;
-                //iterate counter because we need to keep place of where we are in the new array
-                counterC ++;
+                counterB++;
+                counterC++;
+                
+            } else {
+                System.out.println("Catch this exception, please");
+                
             }
+            System.out.println("While has completed a loop.");
+            
+        }
         
-    }
+        System.out.println("ArrayC after merging is " + Arrays.toString(arrayC));
+        System.out.println("This ran.");
         
-        System.out.println(arrayC);
+        
         
     } // end of main method
     
