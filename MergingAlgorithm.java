@@ -21,19 +21,14 @@ public class MergingAlgorithm {
         
         
         int sizeOfArray = randInt(3, 10);
-        // System.out.println("sizeOfArray = " + sizeOfArray);
-        
         int[] randomArray = new int[sizeOfArray];
         int[] randomArray2 = new int[sizeOfArray];
-        
-        int counter = 0;
         
         for (int i = 0; i < sizeOfArray; i++){
             int number = randInt(1,9);
             int number2 = randInt(1,9);
-            randomArray[counter] = number;
-            randomArray2[counter] = number2;
-            counter++;
+            randomArray[i] = number;
+            randomArray2[i] = number2;
         }
         
         Arrays.sort(randomArray);
@@ -106,7 +101,7 @@ public class MergingAlgorithm {
             if (arrayA[counterA] == arrayB[counterB]){
                 
                 //Safeguard for index overflow by checking which counter has more room
-                if (counterB > counterA){
+                if (counterB > arrayA.length-1){
                     arrayC[counterC] = arrayA[counterA];
                     counterA++;
                     counterC++;
@@ -115,7 +110,6 @@ public class MergingAlgorithm {
                     arrayC[counterC] = arrayB[counterB];
                     counterB++;
                     counterC++;
-                    
                 }
             
             } else if (arrayB[counterB] <= arrayA[counterA]){
@@ -124,9 +118,7 @@ public class MergingAlgorithm {
                 counterC++;
                 
             } else if (arrayA[counterA] <= arrayB[counterB]){
-                //Assign arrayA[counterA] (smaller value) to arrayC[counterC]
                 arrayC[counterC] = arrayA[counterA];
-                //Iterate both counterA and counterC because we used it
                 counterA++;
                 counterC++;
             
