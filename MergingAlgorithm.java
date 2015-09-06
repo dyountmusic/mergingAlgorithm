@@ -6,6 +6,7 @@
 package mergingalgorithm;
 
 import java.util.Arrays;
+import java.util.*;
 
 /**
  *
@@ -25,6 +26,7 @@ public class MergingAlgorithm {
         int[] arrayA = {-1,2,9};
         int[] arrayB = {2,3,3,5,6};
         
+        //Calling the method on arrayA and arrayB
         int [] resultArray = mergeArrays(arrayA, arrayB);
         
         System.out.println("Your new array is " + Arrays.toString(resultArray));
@@ -99,7 +101,7 @@ public class MergingAlgorithm {
             
             } else {
                 //This should never run if the sorting is proper
-                System.out.println("Error. The merging failed. Either the array is not an int or the wrong type.");
+                System.out.println("Error. The merging failed. Either the array is not the correct type (int) or there is somethign else wrong here.");
                 
             }
             
@@ -116,6 +118,18 @@ public class MergingAlgorithm {
         System.out.println("ArrayC after merging is " + Arrays.toString(arrayC));
         
         return arrayC;
-}
+} // end of mergeArrays method
+    
+    public static int randInt(int min, int max) {
+
+    // Usually this can be a field rather than a method variable
+    Random rand = new Random();
+
+    // nextInt is normally exclusive of the top value,
+    // so add 1 to make it inclusive
+    int randomNum = rand.nextInt((max - min) + 1) + min;
+
+    return randomNum;
+} //end of randInt method
     
 }
