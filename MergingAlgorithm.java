@@ -19,10 +19,40 @@ public class MergingAlgorithm {
      */
     public static void main(String[] args) {
         
+        
+        int sizeOfArray = randInt(3, 10);
+        // System.out.println("sizeOfArray = " + sizeOfArray);
+        
+        int[] randomArray = new int[sizeOfArray];
+        int[] randomArray2 = new int[sizeOfArray];
+        
+        int counter = 0;
+        
+        for (int i = 0; i < sizeOfArray; i++){
+            int number = randInt(1,9);
+            int number2 = randInt(1,9);
+            randomArray[counter] = number;
+            randomArray2[counter] = number2;
+            counter++;
+        }
+        
+        Arrays.sort(randomArray);
+        Arrays.sort(randomArray2);
+        
+        System.out.println("RandomArray contains " + sizeOfArray + " elements and those elements are " + Arrays.toString(randomArray));
+        System.out.println("RandomArray2 contains " + sizeOfArray + " elements and those elements are " + Arrays.toString(randomArray2));
+        
+        int [] resultArray = mergeArrays(randomArray, randomArray2);
+        
+        System.out.println("Your result array is " + Arrays.toString(resultArray));
+        
+        //These are hardcoded values: If you wish to have random values see above code
         //Declareing both arrays and populate them
         //For the sake of this simple program we have hardcoded them in
         //Requirements: any positive or negative number in the int class
         //Must be sorted from least to greatest before program runs
+        
+        /**
         int[] arrayA = {-1,2,9};
         int[] arrayB = {2,3,3,5,6};
         
@@ -30,6 +60,7 @@ public class MergingAlgorithm {
         int [] resultArray = mergeArrays(arrayA, arrayB);
         
         System.out.println("Your new array is " + Arrays.toString(resultArray));
+        */
 
     } // end of main method
     
@@ -38,7 +69,6 @@ public class MergingAlgorithm {
         //Declare an array with places for each of the values to be added
         // This is where we will merge the arrayA and arrayB into
         int [] arrayC = new int[arrayA.length + arrayB.length];
-        System.out.println("ArrayC before merging is " + Arrays.toString(arrayC));
         
         //Declare a variable for the counter and initilize it as 0
         int counterA = 0;
@@ -61,13 +91,14 @@ public class MergingAlgorithm {
         
         //Begin merge
         while (counterC < (arrayA.length + arrayB.length) - 1){
-
-            System.out.println("ArrayC after merging is " + Arrays.toString(arrayC));
+            
+            /**
             System.out.println("Counter A is " + counterA);
             System.out.println("Counter B is " + counterB);
             System.out.println("Counter C is " + counterC);
+            */
             
-            System.out.println("System is comparing " + arrayA[counterA] + " and " + arrayB[counterB] + ".");
+            //System.out.println("System is comparing " + arrayA[counterA] + " and " + arrayB[counterB] + ".");
              
 
             //Check if the value in arrayA[counterA] is equal to  value in arrayB[counterB]
@@ -114,10 +145,8 @@ public class MergingAlgorithm {
                 arrayC[counterC] = arrayB[arrayB.length -1];
             }
         }
-        
-        System.out.println("ArrayC after merging is " + Arrays.toString(arrayC));
-        
         return arrayC;
+        
 } // end of mergeArrays method
     
     public static int randInt(int min, int max) {
