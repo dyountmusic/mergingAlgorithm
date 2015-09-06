@@ -22,8 +22,16 @@ public class MergingAlgorithm {
         //For the sake of this simple program we have hardcoded them in
         //Requirements: any positive or negative number in the int class
         //Must be sorted from least to greatest before program runs
-        int[] arrayA = {2,2,6};
-        int[] arrayB = {5,6,6};
+        int[] arrayA = {-1,2,9};
+        int[] arrayB = {2,3,3,5,6};
+        
+        int [] resultArray = mergeArrays(arrayA, arrayB);
+        
+        System.out.println("Your new array is " + Arrays.toString(resultArray));
+
+    } // end of main method
+    
+    public static int[] mergeArrays(int[] arrayA, int[] arrayB) {
         
         //Declare an array with places for each of the values to be added
         // This is where we will merge the arrayA and arrayB into
@@ -95,12 +103,19 @@ public class MergingAlgorithm {
                 
             }
             
-            //This runs and appends the last number in the left over array
-            arrayC[counterC] = arrayB[arrayB.length-1];
+            //Figure out which array is left over
+            //Take the last value and apend it
+            
+            if (counterA == arrayA.length - 1){
+                arrayC[counterC] = arrayA[arrayA.length -1];
+            } else if (counterB == arrayB.length - 1){
+                arrayC[counterC] = arrayB[arrayB.length -1];
+            }
         }
         
         System.out.println("ArrayC after merging is " + Arrays.toString(arrayC));
-
-    } // end of main method
+        
+        return arrayC;
+}
     
 }
