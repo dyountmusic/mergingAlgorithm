@@ -19,11 +19,14 @@ public class MergingAlgorithm {
      */
     public static void main(String[] args) {
         
-        
+        //Create a variable to randomiz the size of the arrays created
         int sizeOfArray = randInt(3, 10);
+        
+        //Declare an array with the randomized size
         int[] randomArray = new int[sizeOfArray];
         int[] randomArray2 = new int[sizeOfArray];
         
+        //Loop through each array and place a new randomized integer in
         for (int i = 0; i < sizeOfArray; i++){
             int number = randInt(1,9);
             int number2 = randInt(1,9);
@@ -31,22 +34,24 @@ public class MergingAlgorithm {
             randomArray2[i] = number2;
         }
         
+        //Sort each array ensuring that the resulting array is sorted from small to large
         Arrays.sort(randomArray);
         Arrays.sort(randomArray2);
         
+        //Report the size of the array to the console
+        //Also report the randomized values in each array
         System.out.println("RandomArray contains " + sizeOfArray + " elements and those elements are " + Arrays.toString(randomArray));
         System.out.println("RandomArray2 contains " + sizeOfArray + " elements and those elements are " + Arrays.toString(randomArray2));
         
+        //Call the mergeArrays method which takes two arrays (in this case two random arrays created above) and returns one array which is a merged array
         int [] resultArray = mergeArrays(randomArray, randomArray2);
-        
+         
+        //Report the resuting array
         System.out.println("Your result array is " + Arrays.toString(resultArray));
         
-        //These are hardcoded values: If you wish to have random values see above code
-        //Declareing both arrays and populate them
-        //For the sake of this simple program we have hardcoded them in
-        //Requirements: any positive or negative number in the int class
-        //Must be sorted from least to greatest before program runs
-        
+
+        //Commented out for use of randomArrays
+        //These are hardcoded values for testing
         /**
         int[] arrayA = {-1,2,9};
         int[] arrayB = {2,3,3,5,6};
@@ -84,18 +89,9 @@ public class MergingAlgorithm {
                 
         }
         
-        //Begin merge
+        //Begin merge loop
         while (counterC < (arrayA.length + arrayB.length) - 1){
             
-            /**
-            System.out.println("Counter A is " + counterA);
-            System.out.println("Counter B is " + counterB);
-            System.out.println("Counter C is " + counterC);
-            */
-            
-            //System.out.println("System is comparing " + arrayA[counterA] + " and " + arrayB[counterB] + ".");
-             
-
             //Check if the value in arrayA[counterA] is equal to  value in arrayB[counterB]
             //Iterate the [counter] value each array is checking if that array has the lesser value and it's moved
             if (arrayA[counterA] == arrayB[counterB]){
@@ -112,25 +108,29 @@ public class MergingAlgorithm {
                     counterC++;
                 }
             
-            } else if (arrayB[counterB] <= arrayA[counterA]){
+            //Check if the value in arrayB is less than or equal to the value in arrayA
+            } else if (arrayB[counterB] < arrayA[counterA]){
                 arrayC[counterC] = arrayB[counterB];
                 counterB++;
                 counterC++;
                 
-            } else if (arrayA[counterA] <= arrayB[counterB]){
+            //Check if the value in arrayA is less than or equal to the value in arrayB    
+            } else if (arrayA[counterA] < arrayB[counterB]){
                 arrayC[counterC] = arrayA[counterA];
                 counterA++;
                 counterC++;
             
             } else {
-                //This should never run if the sorting is proper
+                //This should never run if the merging method executes without error
                 System.out.println("Error. The merging failed. Either the array is not the correct type (int) or there is somethign else wrong here.");
                 
             }
             
             //Figure out which array is left over
-            //Take the last value and apend it
+            //Take the remaining values and apend it
             
+            //Something fishy is going on in this looping process causing an index out of bounds error
+            //Probably need to impliment a loop which ensures that if two values are left over you apend both instead of stopping at one
             if (counterA == arrayA.length - 1){
                 arrayC[counterC] = arrayA[arrayA.length -1];
             } else if (counterB == arrayB.length - 1){
